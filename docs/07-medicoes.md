@@ -1,36 +1,39 @@
-# Medidas antes de soldar
+# Como medir
 
-Coifa desligada da tomada. Multímetro e, se houver, continuidade com a placa alimentada por variac ou pela própria rede só depois de o gabinete estar fechado o bastante para não encostar na fase. Não ligar o USB do XIAO nessa sessão.
+O arquivo que recebe os números é [medicoes-bancada.md](medicoes-bancada.md). Este aqui é o procedimento. Não sobrescrever este arquivo com resultado de bancada.
 
-Anotar os números em `docs/medicoes-bancada.md` quando existirem. Esse arquivo ainda não está no repositório de propósito.
+Coifa desligada da tomada para achar fios e medir resistência. Para tensão de LED e rail, a placa precisa estar energizada: gabinete o bastante fechado para não encostar na fase, uma mão só, ponta de prova isolada. Não ligar o USB do XIAO nessa sessão.
 
 ## Botões
 
-Para cada um dos quatro:
+Para luz, baixa, média e alta:
 
-1. Achar os dois fios do contato no flat.
-2. Em repouso, medir resistência. Esperado: aberto.
-3. Apertado, medir para onde fecha: GND da placa, ou um rail.
-4. Anotar se é ativo em baixo (hipótese do esquema) ou ativo em alto.
+1. Achar no flat os dois condutores que mudam quando o botão é apertado. Continuidade com o botão solto e apertado.
+2. Solto: esperar circuito aberto, ou resistência de megaohms.
+3. Apertado: ver para onde fecha. Uma ponta no sinal, a outra no GND da placa. Se der perto de 0 Ω, é ativo em baixo e o esquema vale.
+4. Se apertado não fechar para o GND, medir contra o rail de 3,3 V e contra o de 5 V. Anotar qual. Não montar o opto até isso estar escrito.
+5. Não cortar nada para esta medida. A ponta encosta no pad ou num fio descascado só na janela da prova.
 
 ## LEDs
 
-Para cada botão, com a função ligada e desligada:
+Para cada botão, função desligada e depois ligada:
 
-1. Tensão do fio do LED em relação ao GND da placa.
-2. Se é o mesmo fio do contato ou um fio separado. No painel com LED integrado costuma ser separado.
-3. Queda de brilho ao pôr 1 kΩ para o GND. Se apagar, o ponto de leitura está errado.
+1. Achar o fio cuja tensão muda junto com o símbolo aceso. Medir contra o GND da placa.
+2. Anotar a tensão aceso e apagado. Esperado algo como 0 V e 3,3 V, ou 0 V e 5 V.
+3. Confirmar que esse fio não é o mesmo do contato do botão.
+4. Com a função ligada, encostar 1 kΩ desse fio para o GND da placa. O símbolo tem de continuar visível. Se apagar, o ponto está no meio do resistor original do LED: procurar o nó depois desse resistor, do lado do LED.
+5. Não cortar o fio. A prova é em paralelo.
 
 ## Fonte
 
-1. Tensão do rail de lógica: 3,3 V ou 5 V.
-2. Tensão de um rail de potência utilizável: 5 V ou 12 V.
-3. Se o GND da lógica está no neutro ou na fase. Se não der para saber com segurança, manter o B0505S. Não é opcional até essa medida existir.
+1. Tensão do rail de lógica contra o GND da placa.
+2. Tensão de um rail que aguente o B0505S: 5 V direto, ou 12 V com buck antes.
+3. Não decidir se o GND da lógica é neutro ou fase. Manter o B0505S de qualquer jeito.
 
 ## Marchas
 
-Com a coifa montada e segura:
+Com a coifa fechada o bastante para funcionar:
 
-1. Baixa ligada. Apertar média. O LED de baixa apaga e o de média acende, ou os dois ficam independentes?
-2. Alta ligada. Apertar alta de novo. Confirmar que desliga, como o manual diz.
-3. Tempo entre o toque e o LED estável. Vira a constante `kPulseMs` e `kSettleMs` do firmware.
+1. Ligar baixa. Apertar média. Anotar se a baixa apaga e a média acende, ou se as duas ficam independentes.
+2. Ligar alta. Apertar alta de novo. Confirmar que desliga, como o manual diz.
+3. Cronometrar do toque até o LED estável. Esse número vira `kPulseMs` e `kSettleMs` em `firmware/include/pins.h`.
