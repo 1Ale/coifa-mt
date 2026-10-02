@@ -6,6 +6,8 @@ O painel original permanece. Quatro optoacopladores pulsam os botões momentâne
 
 Não há vínculo com a EOS. Abrir o aparelho encerra a garantia de 12 meses do termo do fabricante.
 
+O fio original não se corta. O PC817 entra em derivação, no pad do conector ou numa janela descascada.
+
 ## O que este repositório guarda
 
 | Caminho | Conteúdo |
@@ -13,16 +15,18 @@ Não há vínculo com a EOS. Abrir o aparelho encerra a garantia de 12 meses do 
 | [docs/01-contexto.md](docs/01-contexto.md) | Aparelho, botões, o que não fazer |
 | [docs/02-bom.md](docs/02-bom.md) | Lista de materiais e links de compra |
 | [docs/03-espaco-mecanico.md](docs/03-espaco-mecanico.md) | Bolso entre as barras em L e a parede do tubo |
-| [docs/04-esquema.md](docs/04-esquema.md) | Esquema e hipótese de polaridade |
-| [docs/05-montagem.md](docs/05-montagem.md) | Ordem de montagem e isolamento |
+| [docs/04-esquema.md](docs/04-esquema.md) | Perna do PC817 em cada fio, sem corte |
+| [docs/05-montagem.md](docs/05-montagem.md) | Derivação, ordem de montagem, isolamento |
 | [docs/06-matter.md](docs/06-matter.md) | Endpoints, Thread, Apple Home e Home Assistant |
-| [docs/07-medicoes.md](docs/07-medicoes.md) | Medidas obrigatórias antes de soldar |
-| [hardware/schematic.svg](hardware/schematic.svg) | Esquema da hipótese ativa em baixo |
+| [docs/07-medicoes.md](docs/07-medicoes.md) | Como medir, sem cortar fio |
+| [docs/medicoes-bancada.md](docs/medicoes-bancada.md) | Tabelas vazias para o resultado da bancada |
+| [hardware/schematic.svg](hardware/schematic.svg) | Esquema com pino 1–4 e o ponto de derivação |
 | [firmware/](firmware/) | Esqueleto PlatformIO para completar depois |
 
 ## Decisões já tomadas
 
 - Não interromper o triac do motor (~410 W). Só simular o toque e ler o LED.
+- Não cortar o flat. Paralelo no contato, paralelo no LED.
 - Placa: Seeed XIAO ESP32-C6. O DevKitC barato com WROOM-1 não tem conector de antena.
 - Antena externa U.FL fora do tubo de aço, no forro. Wi-Fi 6, BLE e Thread compartilham o mesmo rádio.
 - Alimentação isolada (B0505S-2W). A fonte da coifa pode ser não isolada.
@@ -30,7 +34,7 @@ Não há vínculo com a EOS. Abrir o aparelho encerra a garantia de 12 meses do 
 
 ## O que ainda depende de medida
 
-A polaridade dos botões e dos LEDs não está no manual. O esquema assume botão fechando para GND e LED ativo em alto. Confirmar com [docs/07-medicoes.md](docs/07-medicoes.md) antes de fechar a placa.
+A polaridade dos botões e dos LEDs não está no manual. O esquema assume botão fechando para GND e LED ativo em alto. O procedimento está em [docs/07-medicoes.md](docs/07-medicoes.md). Os números entram em [docs/medicoes-bancada.md](docs/medicoes-bancada.md).
 
 ## Firmware
 
