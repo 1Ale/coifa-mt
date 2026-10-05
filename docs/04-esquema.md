@@ -53,15 +53,12 @@ Não colocar este opto em série com o LED. Série exige corte e, se o opto abri
 
 ## Alimentação
 
-B0505S-2W, SIP de quatro pinos, marcação no corpo:
+A fonte do XIAO não sai da coifa. Um carregador de 5 V / 1 A fica no forro, no mesmo caminho do pigtail, e o cabo entra no USB do XIAO. O opto isola o sinal. A fonte separada isola a alimentação. Não há GND em comum.
 
-| Pino do módulo | Liga em |
-|---|---|
-| +Vin | 5 V da coifa, depois de um buck se o rail for 12 V |
-| −Vin | GND da placa da coifa |
-| +Vo | pino 5 V do XIAO |
-| −Vo | GND do XIAO |
+O B0505S-2W (400 mA) serviria se aparecesse, ligado ao rail de 5 V da coifa. Não apareceu.
 
-Não ligar +Vo no pino de 3,3 V. Capacitor de 10 µF entre +Vo e −Vo segura o pico do rádio.
+- A0505S-2W é ±5 V, 200 mA por trilho. Usar só o positivo dá 1 W, igual a um B0505S-1W. Não juntar +Vo com −Vo.
+- Dois B0505S-1W não se colocam em paralelo. O fabricante veta.
+- Um B0505S-1W (200 mA) não cobre o pico de 305 mA do 802.15.4 a 20 dBm, nem o do Wi-Fi.
 
 GPIO3 em baixo habilita o RF switch. GPIO14 em alto seleciona o U.FL. Esses dois não recebem opto.
