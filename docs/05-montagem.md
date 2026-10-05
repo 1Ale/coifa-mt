@@ -18,8 +18,8 @@ O flat e os fios do painel continuam inteiros. O opto é uma derivação.
 3. Preencher [medicoes-bancada.md](medicoes-bancada.md).
 4. Montar os oito PC817 na proto, ainda na bancada. Lado do rádio no USB. Lado da coifa numa fonte de bancada isolada. Não misturar os GNDs.
 5. Levar a proto para o bolso, acima do motor. Fixar na barra ou num suporte colado na parede do tubo.
-6. Passar o pigtail para o forro sem dobra fechada no U.FL.
-7. Gravar e comissionar com a coifa desligada da rede e o XIAO no USB. Só depois cortar o USB e alimentar pelo B0505S.
+6. Passar o pigtail e o cabo USB da fonte do forro pelo mesmo vão, sem dobra fechada no U.FL.
+7. Gravar e comissionar com a coifa desligada da rede e o XIAO no USB do computador. Depois, o USB do computador sai e entra o cabo da fonte de 5 V / 1 A do forro.
 
 ## Conferência de cada canal
 
@@ -30,6 +30,12 @@ Para cada função, luz, baixa, média e alta:
 - Apertar o botão físico e ver o LED do painel acender como antes.
 - Pulsar o GPIO e ver o mesmo efeito.
 - Com a função ligada, o GPIO de sentido fica alto. Se o símbolo do painel esmorecer, trocar 1 kΩ por 2,2 kΩ ou 4,7 kΩ.
+
+## Fonte
+
+Não derivar o rail da coifa. A fonte de 5 V fica no forro, fora do tubo. O cabo só entra no USB do XIAO.
+
+A0505S-2W e dois B0505S-1W não substituem o B0505S-2W que não foi achado. Detalhe em [02-bom.md](02-bom.md).
 
 ## Reversão
 
